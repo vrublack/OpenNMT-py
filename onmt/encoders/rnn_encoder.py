@@ -78,6 +78,7 @@ class RNNEncoder(EncoderBase):
         if lengths is not None and not self.no_pack_padded_seq:
             memory_bank = unpack(memory_bank)[0]
 
+        # this bridge just includes the last timestamp, not all unlike in Wang et. al paper
         if self.use_bridge:
             encoder_final = self._bridge(encoder_final)
         return encoder_final, memory_bank, lengths
